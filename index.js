@@ -51,4 +51,19 @@ async function getItem() {
   console.log(item);
 }
 
-getItem();
+// getItem();
+
+async function updateItem(id) {
+  const item = await Rate.findById(id);
+  if (!item) {
+    return;
+  }
+
+  item.status = "D";
+  item.qty = 90;
+
+  const isUpgated = await item.save();
+  console.log(isUpgated);
+}
+
+updateItem("66116c42e70ff4c4c7893ffc");
